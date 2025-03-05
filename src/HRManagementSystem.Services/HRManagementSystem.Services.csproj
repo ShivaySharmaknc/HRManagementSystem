@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\HRManagementSystem.Core.Entities\HRManagementSystem.Core.Entities.csproj" />
     <ProjectReference Include="..\HRManagementSystem.Data\HRManagementSystem.Data.csproj" />
     <ProjectReference Include="..\HRManagementSystem.Models\HRManagementSystem.Models.csproj" />
   </ItemGroup>

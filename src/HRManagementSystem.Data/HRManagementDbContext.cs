@@ -11,7 +11,6 @@ namespace HRManagementSystem.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Attendance> Attendances { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
         public DbSet<Performance> Performances { get; set; }
         public DbSet<Payroll> Payrolls { get; set; }
@@ -20,17 +19,17 @@ namespace HRManagementSystem.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure relationships
+            // Configure relationships and constraints
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Attendances)
-                .WithOne(a => a.Employee)
-                .HasForeignKey(a => a.EmployeeId);
+                .HasMany(e => e.LeaveRequests)
+                .WithOne(l => l.Employee)
+                .HasForeignKey(l => l.EmployeeId);
 
-            // Add other relationship configurations
+            // Add more configuration as needed
         }
     }
 
-    // Repository interfaces and implementations
+    // Generic Repository Interface
     public interface IRepository<T> where T : class
     {
         Task<IEnumerable<T>> GetAllAsync();
@@ -40,6 +39,7 @@ namespace HRManagementSystem.Data
         Task DeleteAsync(int id);
     }
 
+    // Generic Repository Implementation
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly HRManagementDbContext _context;
@@ -51,6 +51,37 @@ namespace HRManagementSystem.Data
             _dbSet = context.Set<T>();
         }
 
-        // Implement repository methods
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
+
+        public virtual async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        public virtual async Task<T> AddAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public virtual async Task UpdateAsync(T entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public virtual async Task DeleteAsync(int id)
+        {
+            var entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                _dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

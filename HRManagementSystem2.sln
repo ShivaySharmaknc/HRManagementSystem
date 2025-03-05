@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.ViewMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.Web", "src\HRManagementSystem.Web\HRManagementSystem.Web.csproj", "{0B09C10E-9BCE-4504-B6B8-A518B44A906C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.Core.Entities", "HRManagementSystem.Core.Entities\HRManagementSystem.Core.Entities.csproj", "{57172453-C3D7-406B-B715-8A0E966EF2F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +41,15 @@ Global
 		{0B09C10E-9BCE-4504-B6B8-A518B44A906C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B09C10E-9BCE-4504-B6B8-A518B44A906C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B09C10E-9BCE-4504-B6B8-A518B44A906C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57172453-C3D7-406B-B715-8A0E966EF2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57172453-C3D7-406B-B715-8A0E966EF2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57172453-C3D7-406B-B715-8A0E966EF2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57172453-C3D7-406B-B715-8A0E966EF2F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62236834-D309-4908-8B6A-E2375625AD37}
 	EndGlobalSection
 EndGlobal
