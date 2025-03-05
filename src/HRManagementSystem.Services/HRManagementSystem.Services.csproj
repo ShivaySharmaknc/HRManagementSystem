@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HRManagementSystem.Data\HRManagementSystem.Data.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Models\HRManagementSystem.Models.csproj" />
+  </ItemGroup>
+
 </Project>
